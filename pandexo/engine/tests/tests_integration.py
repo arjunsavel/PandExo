@@ -10,6 +10,7 @@ import unittest
 
 
 def run_test():
+	os.chdir('../../..')
 	exo_dict = jdi.load_exo_dict()
 	exo_dict['observation']['sat_level'] = 80    #saturation level in percent of full well 
 	exo_dict['observation']['sat_unit'] = '%' 
