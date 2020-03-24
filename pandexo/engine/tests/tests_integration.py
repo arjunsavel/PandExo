@@ -8,6 +8,8 @@ import pickle as pk
 
 import unittest
 
+print(os.getcwd())
+
 
 def run_test():
 	exo_dict = jdi.load_exo_dict()
