@@ -28,4 +28,4 @@ exo_dict['planet']['td_unit'] = 's'
 exo_dict['planet']['f_unit'] = 'rp^2/r*^2'
 print('Starting TEST run')
 jdi.run_pandexo(exo_dict, ['NIRSpec G140H'], save_file=False)
-print('SUCCESS') 
+print('SUCCESS_test') 
