@@ -104,6 +104,7 @@ setup(
           'pysynphot',
           'sqlalchemy',
           'astroquery'
+          'scipy==1.3.1'
           ],
     entry_points = {
         'console_scripts':
