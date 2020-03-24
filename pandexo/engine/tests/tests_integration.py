@@ -15,7 +15,7 @@ def run_test():
 	exo_dict['observation']['sat_unit'] = '%' 
 	exo_dict['observation']['noccultations'] = 2 #number of transits 
 	exo_dict['observation']['R'] = None          #fixed binning. I usually suggest ZERO binning.. you can always bin later 
-	                                             #without having to redo the calcualtion
+	                                 #without having to redo the calcualtion
 	exo_dict['observation']['baseline'] = 1.0    #fraction of time in transit versus out = in/out
 	exo_dict['observation']['baseline_unit'] = 'frac' 
 	exo_dict['observation']['noise_floor'] = 0   #this can be a fixed level or it can be a filepath 
@@ -35,6 +35,7 @@ def run_test():
 	exo_dict['planet']['f_unit'] = 'rp^2/r*^2'
 	print('Starting TEST run')
 	results = jdi.run_pandexo(exo_dict, ['NIRSpec G140H'], save_file=False)
+	print('SUCCESS_test') 
 	return results
 
 class TestNIRSpec_G140H(unittest.TestCase):
