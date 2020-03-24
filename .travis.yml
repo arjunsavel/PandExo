@@ -30,6 +30,11 @@ install:
 
 script: 
   - python test_import.py 
+  - coverage run -m unittest discover src 
+
+env:
+  - CODECOV_TOKEN="13f4244c-501e-46e1-9e40-931db5f287e6"
 
 after_success:
   - test $TRAVIS_BRANCH = "master" && conda install conda-build && conda install anaconda-client && bash conda/conda_upload.sh
+  - bash <(curl -s https://codecov.io/bash) -t 13f4244c-501e-46e1-9e40-931db5f287e6
