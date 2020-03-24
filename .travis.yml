@@ -27,6 +27,7 @@ install:
   - conda install --yes pyfftw
   - conda install --yes numpy synphot joblib scipy astroquery astropy pysynphot photutils 
   - python setup.py install 
+  - pip install codecov
 
 script: 
   - python test_import.py 
