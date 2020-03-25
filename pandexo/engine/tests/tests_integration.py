@@ -10,6 +10,9 @@ import urllib.request
 
 import unittest
 
+import zipfile
+
+
 print(os.getcwd())
 
 
@@ -31,8 +34,6 @@ def download_folder(folder, path=None):
 	urllib.request.urlretrieve(folder_url, folder + '.zip')
 	if path:
 		retrieve_extract(path)
-	elif 'src' in os.listdir(): # if we're actually running tests
-		retrieve_extract('src/simmer/tests/')
 	else: # we're running this in an arbitrary directory
 		retrieve_extract('')
 	if folder == 'pandeia_refdata':
