@@ -40,6 +40,7 @@ def download_folder(folder, path=None):
 		os.environ['pandeia_refdata'] = os.getcwd() + '/pandeia_data-1.4'
 	elif folder == 'grp':
 		os.environ['PYSYN_CDBS'] =  os.getcwd() + '/grp/hst/cdbs/'
+	print(f'Downloaded {folder}')
 	os.remove(folder + '.zip')
 
 def delete_folder(folder):
