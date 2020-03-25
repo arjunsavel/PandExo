@@ -11,7 +11,60 @@ import unittest
 print(os.getcwd())
 
 
+def download_folder(folder, path=None):
+	"""
+	Downloads a .zip file from this projects S3 testing bucket, unzips it, and deletes 
+	the .zip file.
+
+	Inputs:
+		folder : (string) name of the folder to be downloaded.
+	"""
+
+	def retrieve_extract(path):
+		with zipfile.ZipFile(folder + '.zip', 'r') as zip_ref:
+			zip_ref.extractall(path)
+
+
+	folder_url = f'https://pandexotesting.s3-us-west-1.amazonaws.com/{folder}.zip'
+	urllib.request.urlretrieve(folder_url, folder + '.zip')
+	if path:
+		retrieve_extract(path)
+	elif 'src' in os.listdir(): # if we're actually running tests
+		retrieve_extract('src/simmer/tests/')
+	else: # we're running this in an arbitrary directory
+		retrieve_extract('')
+	if folder == 'pandeia_refdata':
+		os.environ['pandeia_refdata'] = os.getcwd() + '/pandeia_data-1.4'
+	elif folder == 'grp':
+		os.environ['PYSYN_CDBS'] =  os.getcwd() + '/grp/hst/cdbs/'
+	os.remove(folder + '.zip')
+
+def delete_folder(folder):
+	if os.listdir(folder):
+		for f in os.listdir(folder):
+			if folder[-1] == '/':
+				path = folder + f
+			else:
+				path = folder + '/' + f
+			if os.path.isfile(path):
+				os.remove(path)
+			else: # if it's a directory!
+				delete_folder(path)
+	os.rmdir(folder)
+
+
 def run_test():
+	# check whether environment variables already set
+	try:
+		os.environ['pandeia_refdata']
+	except KeyError:
+		download_folder('pandeia_data-1.4')
+	try:
+		os.environ['PYSYN_CDBS']
+	except KeyError:
+		download_folder('pandeia_data-1.4')
+	# if not
+	# download files
 	exo_dict = jdi.load_exo_dict()
 	exo_dict['observation']['sat_level'] = 80    #saturation level in percent of full well 
 	exo_dict['observation']['sat_unit'] = '%' 
@@ -37,7 +90,8 @@ def run_test():
 	exo_dict['planet']['f_unit'] = 'rp^2/r*^2'
 	print('Starting TEST run')
 	results = jdi.run_pandexo(exo_dict, ['NIRSpec G140H'], save_file=False)
-	print('SUCCESS_test') 
+	print('SUCCESS_test')
+
 	return results
 
 class TestNIRSpec_G140H(unittest.TestCase):
