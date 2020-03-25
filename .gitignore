@@ -1,6 +1,7 @@
 *.pyc
 *.html~
 *.p
+!*compare_run.p
 *.json~
 
 # Jupyter Notebooks
