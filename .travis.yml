@@ -26,7 +26,7 @@ install:
   - source activate test
   - conda config --add channels http://ssb.stsci.edu/astroconda
   - conda install --yes pyfftw
-  - conda install --yes numpy synphot joblib scipy astroquery astropy pysynphot photutils 
+  - conda install --yes numpy synphot joblib astroquery astropy pysynphot photutils 
   - pip install -vv .
   - pip install codecov
 
