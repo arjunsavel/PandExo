@@ -16,7 +16,8 @@ before_install:
     fi
   - bash miniconda.sh -b -p $HOME/miniconda
   - export PATH="$HOME/miniconda/bin:$PATH"
-  - export 
+  - export PYSYN_CDBS='/home/travis/build/arjunsavel/PandExo/grp/hst/cdbs/'
+  - export pandeia_refdata="/home/travis/build/arjunsavel/PandExo/pandeia_data-1.4"
   - hash -r
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
