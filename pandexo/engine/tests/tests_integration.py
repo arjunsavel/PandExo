@@ -101,5 +101,5 @@ class TestNIRSpec_G140H(unittest.TestCase):
 			compare_out = pk.load(f)
 		compare_spectrum = compare_out['FinalSpectrum']['spectrum']
 		spectrum = self.results['FinalSpectrum']['spectrum']
-		val = np.array_equal(spectrum, compare_spectrum)
+		val = np.allclose(spectrum, compare_spectrum)
 		self.assertTrue(val)
