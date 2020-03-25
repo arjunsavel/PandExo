@@ -68,7 +68,7 @@ def run_test():
 		download_folder('grp')
 	print(os.listdir())
 	print(os.environ['PYSYN_CDBS'])
-	print(os.environ['pandeia_refdata'])
+	print(os.environ.get("pandeia_refdata"))
 	exo_dict = jdi.load_exo_dict()
 	exo_dict['observation']['sat_level'] = 80    #saturation level in percent of full well 
 	exo_dict['observation']['sat_unit'] = '%' 
