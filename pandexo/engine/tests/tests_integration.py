@@ -6,6 +6,8 @@ import os
 
 import pickle as pk
 
+import urllib.request
+
 import unittest
 
 print(os.getcwd())
@@ -54,7 +56,6 @@ def delete_folder(folder):
 
 
 def run_test():
-	# check whether environment variables already set
 	try:
 		os.environ['pandeia_refdata']
 	except KeyError:
@@ -63,8 +64,6 @@ def run_test():
 		os.environ['PYSYN_CDBS']
 	except KeyError:
 		download_folder('pandeia_data-1.4')
-	# if not
-	# download files
 	exo_dict = jdi.load_exo_dict()
 	exo_dict['observation']['sat_level'] = 80    #saturation level in percent of full well 
 	exo_dict['observation']['sat_unit'] = '%' 
