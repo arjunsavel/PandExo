@@ -36,7 +36,7 @@ def download_folder(folder, path=None):
 		retrieve_extract(path)
 	else: # we're running this in an arbitrary directory
 		retrieve_extract('')
-	if folder == 'pandeia_refdata-1.4':
+	if folder == 'pandeia_data-1.4':
 		os.environ['pandeia_refdata'] = os.getcwd() + '/pandeia_data-1.4'
 	elif folder == 'grp':
 		os.environ['PYSYN_CDBS'] =  os.getcwd() + '/grp/hst/cdbs/'
