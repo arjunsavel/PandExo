@@ -66,6 +66,9 @@ def run_test():
 		os.environ['PYSYN_CDBS']
 	except KeyError:
 		download_folder('grp')
+	print(os.listdir())
+	print(os.environ['PYSYN_CDBS'])
+	print(os.environ['pandeia_data-1.4'])
 	exo_dict = jdi.load_exo_dict()
 	exo_dict['observation']['sat_level'] = 80    #saturation level in percent of full well 
 	exo_dict['observation']['sat_unit'] = '%' 
