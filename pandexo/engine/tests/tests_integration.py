@@ -36,7 +36,7 @@ def download_folder(folder, path=None):
 		retrieve_extract(path)
 	else: # we're running this in an arbitrary directory
 		retrieve_extract('')
-	if folder == 'pandeia_refdata':
+	if folder == 'pandeia_refdata-1.4':
 		os.environ['pandeia_refdata'] = os.getcwd() + '/pandeia_data-1.4'
 	elif folder == 'grp':
 		os.environ['PYSYN_CDBS'] =  os.getcwd() + '/grp/hst/cdbs/'
@@ -68,7 +68,7 @@ def run_test():
 		download_folder('grp')
 	print(os.listdir())
 	print(os.environ['PYSYN_CDBS'])
-	print(os.environ['pandeia_data'])
+	print(os.environ['pandeia_refdata'])
 	exo_dict = jdi.load_exo_dict()
 	exo_dict['observation']['sat_level'] = 80    #saturation level in percent of full well 
 	exo_dict['observation']['sat_unit'] = '%' 
