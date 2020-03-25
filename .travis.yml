@@ -32,7 +32,8 @@ install:
 
 script: 
   - coverage run -m unittest discover
-  - python test_import.py 
+  # - python test_import.py 
+  - python run_test.py
 
 env:
   - CODECOV_TOKEN="13f4244c-501e-46e1-9e40-931db5f287e6"
