@@ -58,13 +58,8 @@ def delete_folder(folder):
 
 
 def run_test():
-	try:
-		os.environ['pandeia_refdata']
-	except KeyError:
+	if os.getcwd() == '/home/travis/build/arjunsavel/PandExo': #testing on Travis
 		download_folder('pandeia_data-1.4')
-	try:
-		os.environ['PYSYN_CDBS']
-	except KeyError:
 		download_folder('grp')
 	print(os.listdir())
 	print(os.environ['PYSYN_CDBS'])
