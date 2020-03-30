@@ -11,6 +11,7 @@ from . import create_input as create
 from .compute_noise import ExtractSpec
 import astropy.units as u
 import pickle
+import ipdb
 from pandeia.engine.calc_utils import build_default_calc, build_default_source
 
 #constant parameters.. consider putting these into json file 
@@ -338,6 +339,7 @@ def compute_maxexptime_per_int(pandeia_input, sat_level):
     pandeia_input['configuration']['detector']['nint'] = 1 
     pandeia_input['configuration']['detector']['nexp'] = 1
     
+    ipdb.set_trace()
     report = perform_calculation(pandeia_input, dict_report=False)
     report_dict = report.as_dict() 
     
